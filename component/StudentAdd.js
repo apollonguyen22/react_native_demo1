@@ -19,7 +19,7 @@ const StudentAdd = ({navigation}) => {
         }),
         onSubmit: values => {
             dispatch(addStudentAction(values));
-            navigation.navigate('Student');
+            navigation.navigate('Tab');
         },
     });
 
