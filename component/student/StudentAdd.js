@@ -1,9 +1,11 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { addStudentAction } from '../redux/action/StudentAction';
+import { addStudentAction } from '../../redux/action/StudentAction';
 import * as Yup from 'yup';
+import { styles } from '../../assets/style/student/StudentAddStyle';
+import Button from '../../component_item/button/Button';
 
 const StudentAdd = ({navigation}) => {
 
@@ -19,7 +21,7 @@ const StudentAdd = ({navigation}) => {
         }),
         onSubmit: values => {
             dispatch(addStudentAction(values));
-            navigation.navigate('Tab');
+            navigation.navigate('Student');
         },
     });
 
@@ -39,42 +41,13 @@ const StudentAdd = ({navigation}) => {
                     <Text style={styles.error}>{formik.errors.email}</Text>
                 ) : []}
 
-            <View style={styles.button}>
+            {/* <View style={styles.button}>
                 <Button type="submit" title="Add" onPress={() => {formik.handleSubmit();}}/>
-            </View>
+            </View> */}
+            <Button name={'Add'} textColor={'#fff'} styleContainer={styles.button}/>
+
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    input: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        margin: 10,
-        borderRadius: 5,
-        backgroundColor: '#fff',
-        color: '#000',
-    },
-    title: {
-        color: 'black',
-        textAlign: 'center',
-        marginTop: 20,
-        marginBottom: 30,
-        fontSize: 25,
-    },
-    button: {
-        marginTop: 20,
-        margin: 10,
-    },
-    error: {
-        color: 'red',
-        marginLeft: 12,
-    },
-    label: {
-        marginLeft: 12,
-        color: '#000',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-});
 export default StudentAdd;

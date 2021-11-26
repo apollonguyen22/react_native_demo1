@@ -1,11 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch } from 'react-redux';
-import { updateStudentAction } from '../redux/action/StudentAction';
+import { updateStudentAction } from '../../redux/action/StudentAction';
 import * as Yup from 'yup';
+import {styles} from '../../assets/style/student/StudentDetailStyle';
+import Button from '../../component_item/button/Button';
+import Input from '../../component_item/input_text/Input';
+
 const StudentDetail = ({navigation,route}) => {
     const dispatch = useDispatch();
     const student = route.params.item;
@@ -24,7 +28,7 @@ const StudentDetail = ({navigation,route}) => {
         }),
         onSubmit: values => {
             dispatch(updateStudentAction(values));
-            navigation.navigate('Tab');
+            navigation.navigate('Student');
             // console.log('formik value', values);
         },
     });
@@ -55,17 +59,17 @@ const StudentDetail = ({navigation,route}) => {
         <View>
             <Text style={styles.title}>Update Student</Text>
 
-            <Text style={styles.label}>ID</Text>
-            <TextInput style={styles.input} value={formik.values.id.toString()} editable={false}/>
+            <Icon name="id-badge" size={20} style={styles.iconId}/>
+            <Input styleContainer={styles.input} value={formik.values.id.toString()} editable={false}/>
 
-            <Text style={styles.label}>Name</Text>
-            <TextInput style={styles.input} placeholder="Student Name" value={formik.values.name} onChangeText={formik.handleChange('name')}/>
+            <Icon name="user" size={20} style={styles.iconName}/>
+            <Input styleContainer={styles.input} placeholder="Student Name" value={formik.values.name} onChangeText={formik.handleChange('name')}/>
                 {formik.errors.name && formik.touched.name ? (
                     <Text style={styles.error}>{formik.errors.name}</Text>
                 ) : []}
 
-            <Text style={styles.label}>Email</Text>
-            <TextInput style={styles.input} placeholder="Email" value={formik.values.email} onChangeText={formik.handleChange('email')}/>
+            <Icon name="envelope" size={20} style={styles.iconEmail}/>
+            <Input styleContainer={styles.input} placeholder="Email" value={formik.values.email} onChangeText={formik.handleChange('email')}/>
                 {formik.errors.email && formik.touched.name ? (
                     <Text style={styles.error}>{formik.errors.email}</Text>
                 ) : []}
@@ -84,94 +88,12 @@ const StudentDetail = ({navigation,route}) => {
                 </View>}
             />
 
-            {/* <View style={styles.button}>
-                <Button type="submit" title="Update" onPress={() => {
-                    if (formik.handleSubmit()){
-                        navigation.navigate('StudentList');
-                    }
-                }}/>
-            </View> */}
-
             <View style={styles.fixToText}>
-                <Button
-                title="Add Course"
-                onPress={() => {navigation.navigate('Course',{student});}}
-                />
-                <Button
-                title="Save change"
-                onPress={() => {formik.handleSubmit();}}
-                />
+                <Button name={'Add Course'} textColor={'#fff'} styleContainer={styles.addcourse} onPress={() => {navigation.navigate('Course', {student});}}/>
+                <Button name={'Save Change'} textColor={'#fff'} styleContainer={styles.addcourse} onPress={() => {formik.handleSubmit();}}/>
             </View>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    input: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        margin: 10,
-        borderRadius: 5,
-        backgroundColor: '#fff',
-        color: '#000',
-    },
-    title: {
-        color: 'black',
-        textAlign: 'center',
-        marginTop: 20,
-        marginBottom: 30,
-        fontSize: 25,
-    },
-    button: {
-        marginTop: 20,
-        margin: 10,
-    },
-    error: {
-        color: 'red',
-        marginLeft: 12,
-    },
-    label: {
-        marginLeft: 12,
-        color: '#000',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    listItem: {
-        fontSize: 20,
-        color: 'black',
-        padding: 10,
-    },
-
-    list: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginLeft: 20,
-        marginRight: 10,
-        marginBottom: 5,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        padding: 10,
-    },
-
-    listIcon: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginRight: 10,
-        marginTop: 10,
-    },
-    edit: {
-        marginRight: 5,
-        marginTop: 2,
-    },
-    fixToText: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 10,
-        // paddingLeft: 10,
-        // paddingRight: 10,
-    },
-});
 
 export default StudentDetail;

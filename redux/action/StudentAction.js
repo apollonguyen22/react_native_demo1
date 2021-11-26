@@ -15,7 +15,7 @@ export const getAllStudentAction = () => {
             // const a = JSON.stringify(result.data);
             // console.log(a);
         } catch (e){
-            alert(e.message);
+            // alert(e.message);
             console.log('error',e.message);
         }
     };

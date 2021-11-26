@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Button, FlatList, LogBox, StyleSheet, Text, View } from 'react-native';
+import { FlatList, LogBox, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import {getAllCourseAction} from '../redux/action/CourseAction';
+import {getAllCourseAction} from '../../redux/action/CourseAction';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { updateStudentAction } from '../redux/action/StudentAction';
+import { updateStudentAction } from '../../redux/action/StudentAction';
+import {styles} from '../../assets/style/course/CourseStyle';
+import Button from '../../component_item/button/Button';
 
 const Course = ({navigation,route}) => {
 
@@ -40,58 +42,13 @@ const Course = ({navigation,route}) => {
                     </View>
                 </View>}
             />
-            <View style={styles.button}>
+            {/* <View style={styles.button}>
                 <Button title="Add new" onPress={() => {}}/>
-            </View>
+            </View> */}
+            <Button name={'Add new'} textColor={'#fff'} styleContainer={styles.button}/>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    title: {
-        color: 'black',
-        textAlign: 'center',
-        marginTop: 20,
-        marginBottom: 30,
-        fontSize: 25,
-    },
-    listItem: {
-        fontSize: 20,
-        color: 'black',
-        padding: 10,
-    },
-
-    list: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginLeft: 20,
-        marginRight: 10,
-        marginBottom: 5,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        padding: 10,
-    },
-
-    listIcon: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginRight: 10,
-        marginTop: 10,
-    },
-
-    button: {
-        marginTop: 20,
-        margin: 20,
-    },
-
-    edit: {
-        marginRight: 5,
-        marginTop: 2,
-    },
-});
-
 
 export default Course;
 
