@@ -2,12 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     input: {
-        borderColor: 'gray',
-        borderWidth: 1,
-        margin: 10,
-        borderRadius: 5,
-        backgroundColor: '#fff',
         color: '#000',
+        marginTop: 10,
     },
     title: {
         color: 'black',
@@ -24,10 +20,16 @@ export const styles = StyleSheet.create({
         color: 'red',
         marginLeft: 12,
     },
-    label: {
-        marginLeft: 12,
-        color: '#000',
-        fontSize: 16,
-        fontWeight: 'bold',
+    iconId: {
+        position: 'absolute',
+        left: 32,
+        zIndex: 100,
+        top: 118,
+    },
+    iconEmail: {
+        position: 'absolute',
+        left: 32,
+        zIndex: 100,
+        top: 194,
     },
 });

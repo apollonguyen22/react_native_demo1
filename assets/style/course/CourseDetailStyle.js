@@ -20,12 +20,6 @@ export const styles = StyleSheet.create({
         color: 'red',
         marginLeft: 12,
     },
-    label: {
-        marginLeft: 12,
-        color: '#000',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
     listItem: {
         fontSize: 20,
         color: 'black',

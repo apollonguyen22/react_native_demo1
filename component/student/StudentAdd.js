@@ -1,11 +1,13 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addStudentAction } from '../../redux/action/StudentAction';
 import * as Yup from 'yup';
 import { styles } from '../../assets/style/student/StudentAddStyle';
 import Button from '../../component_item/button/Button';
+import Input from '../../component_item/input_text/Input';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const StudentAdd = ({navigation}) => {
 
@@ -29,22 +31,19 @@ const StudentAdd = ({navigation}) => {
         <View>
             <Text style={styles.title}>Add Student</Text>
 
-            <Text style={styles.label}>Name</Text>
-            <TextInput style={styles.input} placeholder="Student Name" value={formik.values.name} onChangeText={formik.handleChange('name')}/>
+            <Icon name="user" size={20} style={styles.iconId}/>
+            <Input styleContainer={styles.input} placeholder="Student Name" value={formik.values.name} onChangeText={formik.handleChange('name')}/>
                 {formik.errors.name && formik.touched.name ? (
                     <Text style={styles.error}>{formik.errors.name}</Text>
                 ) : []}
 
-            <Text style={styles.label}>Email</Text>
-            <TextInput style={styles.input} placeholder="Email" value={formik.values.email} onChangeText={formik.handleChange('email')}/>
+            <Icon name="envelope" size={20} style={styles.iconEmail}/>
+            <Input styleContainer={styles.input} placeholder="Email" value={formik.values.email} onChangeText={formik.handleChange('email')}/>
                 {formik.errors.email && formik.touched.name ? (
                     <Text style={styles.error}>{formik.errors.email}</Text>
                 ) : []}
 
-            {/* <View style={styles.button}>
-                <Button type="submit" title="Add" onPress={() => {formik.handleSubmit();}}/>
-            </View> */}
-            <Button name={'Add'} textColor={'#fff'} styleContainer={styles.button}/>
+            <Button name={'Add'} textColor={'#fff'} styleContainer={styles.button} onPress={() => {formik.handleSubmit();}}/>
 
         </View>
     );
