@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     },
     error: {
         color: 'red',
-        marginLeft: 12,
+        marginLeft: 25,
     },
     listItem: {
         fontSize: 20,
@@ -59,13 +59,13 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         left: 32,
         zIndex: 100,
-        top: 175,
+        top: 38,
     },
     iconEmail: {
         position: 'absolute',
         left: 32,
         zIndex: 100,
-        top: 252,
+        top: 35,
     },
     fixToText: {
         flexDirection: 'row',

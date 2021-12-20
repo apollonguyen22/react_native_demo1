@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 30,
         fontSize: 25,
+        zIndex: -1,
     },
     listItem: {
         fontSize: 20,

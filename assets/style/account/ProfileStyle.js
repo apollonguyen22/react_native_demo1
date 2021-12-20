@@ -8,29 +8,34 @@ export const styles = StyleSheet.create({
     title: {
         color: 'black',
         textAlign: 'center',
-        marginTop: 20,
-        marginBottom: 30,
+        marginTop: 10,
+        marginBottom: 20,
         fontSize: 25,
     },
     button: {
-        marginTop: 30,
-        backgroundColor: '#1E90FF',
+        marginTop: 20,
+        margin: 10,
     },
     error: {
         color: 'red',
         marginLeft: 25,
-        zIndex: 100,
     },
     iconId: {
         position: 'absolute',
+        top: 97,
         left: 32,
         zIndex: 100,
-        top: 35,
+    },
+    iconName: {
+        position: 'absolute',
+        left: 32,
+        zIndex: 100,
+        top: 38,
     },
     iconEmail: {
         position: 'absolute',
         left: 32,
         zIndex: 100,
-        top: 34,
+        top: 35,
     },
 });
